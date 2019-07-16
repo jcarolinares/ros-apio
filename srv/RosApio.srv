@@ -1,4 +1,3 @@
-string action
+string command
 ---
-bool status
-string message
+string response

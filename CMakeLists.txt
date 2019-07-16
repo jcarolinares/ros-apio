@@ -14,6 +14,11 @@ add_service_files(
   RosApio.srv
 )
 
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
 catkin_package(
   CATKIN_DEPENDS roscpp rospy sensor_msgs std_msgs message_runtime
 )

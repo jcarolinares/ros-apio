@@ -4,18 +4,15 @@
 import rospy
 from ros_apio.srv import *
 
-# Python libraries
-import subprocess
+def handle_ros_apio(req):
+    print ("Returning: {}".format(req.command))
+    return RosApioResponse(req.command)
 
-def handle_apio_request(req):
-    print ("Service finished")
-    return True
-
-def apio_server():
-    rospy.init_node('apio_server')
-    s = rospy.Service('apio_server', RosApio, handle_apio_request)
-    print "Apio ROS service ready."
+def ros_apio():
+    rospy.init_node('ros_apio_server')
+    s = rospy.Service('ros_apio_server', RosApio, handle_ros_apio)
+    print "Ros Apio Server Ready"
     rospy.spin()
 
 if __name__ == "__main__":
-    apio_server()
+    ros_apio()
