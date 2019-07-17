@@ -1,0 +1,8 @@
+<launch>
+    <arg name="board" default="icezum"/>
+    
+    <node name="ros_apio" type="apio-server.py" pkg="ros_apio" output="screen">
+    </node>
+
+
+</launch>

@@ -5,7 +5,7 @@ import rospy
 from ros_apio.srv import *
 
 
-def add_two_ints_client(command):
+def apio_request(command):
     rospy.wait_for_service('ros_apio_server')
     try:
         ros_apio = rospy.ServiceProxy('ros_apio_server', RosApio)
@@ -15,9 +15,11 @@ def add_two_ints_client(command):
         print "Service call failed: %s"%e
 
 if __name__ == "__main__":
+    rospy.init_node('ros_apio_client')
     if len(sys.argv) == 2:
         command_argument=sys.argv[1]
+        rospy.loginfo("Requesting {}".format(command_argument))
+        rospy.loginfo(apio_request(command_argument))
     else:
+        rospy.logerr("No enough arguments")
         sys.exit(1)
-    print "Requesting {}".format(command_argument)
-    print (add_two_ints_client(command_argument))
