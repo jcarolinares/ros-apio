@@ -1,8 +1,9 @@
 <launch>
     <arg name="board" default="icezum"/>
-    
+    <arg name="circuits-folder" default="circuits"/>
+
     <node name="ros_apio" type="apio-server.py" pkg="ros_apio" output="screen">
+      <param name="board" value="$(arg board)"/>
+      <param name="circuits-folder" value="$(arg circuits-folder)"/>
     </node>
-
-
 </launch>
